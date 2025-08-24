@@ -1,12 +1,10 @@
 from django.shortcuts import render
-from django.urls import path
-import views
-from django.contrib import admin
-from django.urls import include
+from django.http import HttpResponse
 
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.index, name='index'),  # ← маршрут главной страницы
-    path('', include('main.urls')),
-]
+def index(request):
+    return HttpResponse("Главная страница")
+
+
+def about(request):
+    return render(request, "main/about.html")
